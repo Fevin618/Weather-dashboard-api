@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link rel="preconnect" href="https://api.open-meteo.com" />
+    <link rel="preconnect" href="https://geocoding-api.open-meteo.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="weather-app">
+      <section class="app-bar" aria-label="Weather search">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <div>
+            <h1>Weather Dashboard</h1>
+            <p>Live city conditions from Open-Meteo</p>
+          </div>
+        </div>
+
+        <form class="search-form" id="search-form">
+          <label class="sr-only" for="city-input">City name</label>
+          <input
+            id="city-input"
+            name="city"
+            type="search"
+            placeholder="Search city"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+          <button class="icon-button" type="submit" aria-label="Search weather">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10.8 18.1a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Zm0-2a5.2 5.2 0 1 0 0-10.4 5.2 5.2 0 0 0 0 10.4Zm5.7.1 4 4"
+              />
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+
+      <section class="location-options" id="location-options" aria-label="Matching locations"></section>
+
+      <section class="dashboard-grid" aria-label="Current weather dashboard">
+        <article class="current-panel" id="current-panel">
+          <div class="location-header">
+            <div>
+              <p class="eyebrow" id="condition-label">Current weather</p>
+              <h2 id="location-name">Search for a city</h2>
+              <p id="location-meta">Temperature, humidity, and wind appear here.</p>
+            </div>
+            <div class="condition-badge" id="condition-badge" aria-hidden="true">--</div>
+          </div>
+
+          <div class="temperature-row">
+            <span class="temperature-value" id="temperature-value">--</span>
+            <span class="temperature-unit" id="temperature-unit">&deg;C</span>
+          </div>
+
+          <div class="current-details" id="current-details">
+            <span>Feels like --</span>
+            <span>Updated --</span>
+          </div>
+        </article>
+
+        <section class="metric-grid" id="metric-grid" aria-label="Weather metrics"></section>
+
+        <section class="forecast-panel" aria-label="Five day forecast">
+          <div class="section-heading">
+            <h2>Forecast</h2>
+            <span id="timezone-label">Timezone --</span>
+          </div>
+          <div class="forecast-list" id="forecast-list"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
